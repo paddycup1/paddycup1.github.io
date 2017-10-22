@@ -1,9 +1,12 @@
 body{
 	background-image: url("Gw2-64 2017-10-21 23-42-08.jpg");
+	font-family: "Courier New", Courier, monospace;
+	font-stretch: : 100;
 }
 header {
 	font-size: 3em;
 	color: rgb(190,24,24);
+	font-family: 'Bangers';
 }
 
 .Center{
@@ -14,7 +17,6 @@ header {
 
 div#List{
 	background-color: rgba(120,120,120,0.4);
-	height: 200px;
 	border-radius: 25px;
 	padding: 0.5em;
 }
