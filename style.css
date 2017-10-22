@@ -1,0 +1,55 @@
+body{
+	background-image: url("Gw2-64 2017-10-21 23-42-08.png");
+}
+header {
+	font-size: 3em;
+	color: rgb(190,24,24);
+}
+
+.Center{
+	margin: auto;
+    width: 50%;
+    text-align: center;
+}
+
+div#List{
+	background-color: rgba(120,120,120,0.4);
+	height: 200px;
+	border-radius: 25px;
+	padding: 0.5em;
+}
+
+dd{
+	color: rgb(200,200,200);
+	font-size: 1.5em;
+	margin: 0.5em;
+}
+
+table#EncounterTable td{
+	font-size: 1.5em;
+	color: rgb(200,200,200);
+	width: 500;
+	border: 2px solid rgb(177,177,177);
+}
+
+table#EncounterTable th{
+	font-size: 1.8em;
+	color: rgb(200,200,200);
+	width: 500;
+	border: 2px solid rgb(177,177,177);
+}
+
+table#EncounterTable{
+	width: 100%;
+	border: 2px solid rgb(177,177,177);
+	border-collapse: collapse;
+	margin-top: 0.5em;
+}
+
+a:link, a:visited {
+    color: rgb(177,177,177);
+}
+
+a:link:active, a:visited:active {
+    color: rgb(177,177,177);;
+}
