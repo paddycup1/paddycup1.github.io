@@ -118,7 +118,7 @@ a:visited {
 /* mouse over link */
 a:hover {
     animation-name: TextFloat;
-    animation-duration: 0.3s;
+    animation-duration: 0.1s;
     animation-fill-mode:forwards;
 }
 
