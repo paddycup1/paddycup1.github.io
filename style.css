@@ -43,14 +43,19 @@ div.LeftList{
     border-radius: 25px;
     padding: 0.5em;
     margin-top: 3em !important;
+    font-weight: bold;
 }
-
+p{
+    color: rgb(177,177,177);
+	font-size: 1.5em;
+	margin: 1em;	
+}
 dd{
     color: rgb(200,200,200);
     font-size: 1.5em;
     margin: 0.5em;
+    font-weight: bold;
 }
-
 
 table#EncounterTable td{
     font-size: 1.5em;
@@ -78,6 +83,7 @@ td.Slash{
 
 table#EncounterTable a{
 	color: rgb(200,200,200);
+	font-weight: bold;
 }
 a:link, a:visited {
     color: rgb(177,177,177);
