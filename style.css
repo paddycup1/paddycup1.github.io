@@ -1,51 +1,79 @@
 body{
-	background-image: url("Gw2-64 2017-10-21 23-42-08.jpg");
-	font-family: "Courier New", Courier, monospace;
-	font-stretch: : 100;
+    background-image: url("Gw2-64 2017-10-21 23-42-08.jpg");
+    font-family: "Courier New", Courier, monospace;
+    font-stretch: : 100;
+    text-align: center;
 }
+
 header {
-	font-size: 3em;
-	color: rgb(190,24,24);
-	font-family: 'Bangers';
+    font-size: 3em;
+    color: rgb(190,24,24);
+    font-family: 'Bangers';
+}
+
+header.Small {
+    font-size: 2em;
+    color: rgb(200,200,200);
+    text-align: center;
+    font-family: "Arial Black", Gadget, sans-serif;
+}
+
+div{
+	margin: auto;
 }
 
 .Center{
-	margin: auto;
+    margin: auto;
     width: 50%;
     text-align: center;
 }
 
-div#List{
-	background-color: rgba(120,120,120,0.4);
-	border-radius: 25px;
-	padding: 0.5em;
+div.CenterList{
+    text-align: center;
+    background-color: rgba(120,120,120,0.4);
+    border-radius: 25px;
+    padding: 0.5em;
+    display: inline-block
+}
+
+div.LeftList{
+    width: 50%;
+    text-align: left;
+    background-color: rgba(120,120,120,0.4);
+    border-radius: 25px;
+    padding: 0.5em;
+    margin-top: 3em !important;
 }
 
 dd{
-	color: rgb(200,200,200);
-	font-size: 1.5em;
-	margin: 0.5em;
+    color: rgb(200,200,200);
+    font-size: 1.5em;
+    margin: 0.5em;
 }
 
+
 table#EncounterTable td{
-	font-size: 1.5em;
-	color: rgb(200,200,200);
-	width: 500;
-	border: 2px solid rgb(177,177,177);
+    font-size: 1.5em;
+    color: rgb(200,200,200);
+    border: 2px solid rgb(177,177,177);
+    padding: 0.3em;
 }
 
 table#EncounterTable th{
-	font-size: 1.8em;
-	color: rgb(200,200,200);
-	width: 500;
-	border: 2px solid rgb(177,177,177);
+    font-size: 1.8em;
+    color: rgb(200,200,200);
+    border: 2px solid rgb(177,177,177);
+    padding: 0.4em;
 }
 
 table#EncounterTable{
-	width: 100%;
-	border: 2px solid rgb(177,177,177);
-	border-collapse: collapse;
-	margin-top: 0.5em;
+    border: 2px solid rgb(177,177,177);
+    border-collapse: collapse;
+    margin: 0.8em;
+}
+
+td.Slash{
+    background: linear-gradient(to right top, #ffffff00 0%,#ffffff00 49.9%,#B1B1B1 50%,#B1B1B1 51%,#ffffff00 51.1%,#ffffff00 100%);
 }
 
 a:link, a:visited {
