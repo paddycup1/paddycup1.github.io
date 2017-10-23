@@ -83,7 +83,7 @@ table#EncounterTable{
 }
 
 td.Slash{
-    background: linear-gradient(to right top, #ffffff00 0%,#ffffff00 49.9%,#B1B1B1 50%,#B1B1B1 51%,#ffffff00 51.1%,#ffffff00 100%);
+    background: linear-gradient(to right top, #ffffff00 0%,#ffffff00 48.9%,#B1B1B1 49%,#B1B1B1 51%,#ffffff00 51.1%,#ffffff00 100%);
 }
 
 table#EncounterTable a{
