@@ -103,6 +103,7 @@ table#EncounterTable a{
 
 a{
 	color: rgb(200,200,200);
+	text-decoration: none;
 }
 
  /* unvisited link */
