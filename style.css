@@ -4,14 +4,14 @@ body{
     font-family: "Courier New", Courier, monospace;
     font-stretch: : 100;
     text-align: center;
-    text-shadow: 1px 1px 1px black;
+    /*text-shadow: 1px 1px 1px black;*/
 }
 
 header.Big {
     font-size: 3em;
     color: rgb(190,24,24);
     font-family: 'Bangers';
-    text-shadow: 5px 5px 2px black;
+    /*text-shadow: 5px 5px 2px black;*/
 }
 
 header.Small {
@@ -19,7 +19,7 @@ header.Small {
     color: rgb(200,200,200);
     text-align: center;
     font-family: "Arial Black", Gadget, sans-serif;
-    text-shadow: 2px 2px 1px black;
+    /*text-shadow: 2px 2px 1px black;*/
 }
 
 div{
@@ -73,7 +73,7 @@ table#EncounterTable th{
     color: rgb(200,200,200);
     border: 2px solid rgb(177,177,177);
     padding: 0.4em;
-    text-shadow: 2px 2px 1px black;
+    /*text-shadow: 2px 2px 1px black;*/
 }
 
 table#EncounterTable{
