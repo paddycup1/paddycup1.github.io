@@ -54,7 +54,7 @@ dd{
 
 table#EncounterTable td{
     font-size: 1.5em;
-    color: rgb(200,200,200);
+    color: rgb(150,150,150);
     border: 2px solid rgb(177,177,177);
     padding: 0.3em;
 }
@@ -76,6 +76,9 @@ td.Slash{
     background: linear-gradient(to right top, #ffffff00 0%,#ffffff00 49.9%,#B1B1B1 50%,#B1B1B1 51%,#ffffff00 51.1%,#ffffff00 100%);
 }
 
+table#EncounterTable a{
+	color: rgb(200,200,200);
+}
 a:link, a:visited {
     color: rgb(177,177,177);
 }
