@@ -4,6 +4,7 @@ body{
     font-family: "Courier New", Courier, monospace;
     font-stretch: : 100;
     text-align: center;
+    font-weight: bold;
     /*text-shadow: 1px 1px 1px black;*/
 }
 
@@ -47,10 +48,9 @@ div.LeftList{
     border-radius: 25px;
     padding: 0.5em;
     margin-top: 3em !important;
-    font-weight: bold;
 }
 p{
-    color: rgb(177,177,177);
+    color: rgb(200,200,200);
 	font-size: 1.5em;
 	margin: 1em;	
 }
@@ -58,36 +58,32 @@ dd{
     color: rgb(200,200,200);
     font-size: 1.5em;
     margin: 0.5em;
-    font-weight: bold;
 }
 
 table#EncounterTable td{
     font-size: 1.5em;
     color: rgb(150,150,150);
-    border: 2px solid rgb(177,177,177);
+    border: 2px solid rgb(200,200,200);
     padding: 0.3em;
+    font-weight: normal;
 }
 
 table#EncounterTable th{
     font-size: 1.8em;
     color: rgb(200,200,200);
-    border: 2px solid rgb(177,177,177);
+    border: 2px solid rgb(200,200,200);
     padding: 0.4em;
     /*text-shadow: 2px 2px 1px black;*/
 }
 
 table#EncounterTable{
-    border: 2px solid rgb(177,177,177);
+    border: 2px solid rgb(200,200,200);
     border-collapse: collapse;
     margin: 0.8em;
 }
 
 td.Slash{
     background: linear-gradient(to right top, #ffffff00 0%,#ffffff00 48.9%,#B1B1B1 49%,#B1B1B1 51%,#ffffff00 51.1%,#ffffff00 100%);
-}
-
-table#EncounterTable a{
-	font-weight: bold;
 }
 
 @keyframes TextFloat {
@@ -104,6 +100,7 @@ table#EncounterTable a{
 a{
 	color: rgb(200,200,200);
 	text-decoration: none;
+    font-weight: bold;
 }
 
  /* unvisited link */
