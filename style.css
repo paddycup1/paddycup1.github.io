@@ -19,6 +19,12 @@ body{
     }
 }
 
+@media only screen and (max-width: 1080px) {
+    body {
+        background: url("Gw2-64 2017-10-21 23-42-08_mobile.jpg");
+    }
+}
+
 header.Big {
     font-size: 3em;
     color: rgb(190,24,24);
