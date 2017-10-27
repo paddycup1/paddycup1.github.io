@@ -71,10 +71,23 @@ p{
 	font-size: 1.5em;
 	margin: 1em;	
 }
+
 dd{
     color: rgb(200,200,200);
     font-size: 1.5em;
     margin: 0.5em;
+}
+
+dd.WeekList{
+    color: rgb(200,200,200);
+    font-size: 1.7em;
+    margin: 0.5em;
+    margin-bottom: 1em;
+    padding: 0.7em;
+    width: auto;
+    background-color: rgba(120,120,120,0.4);
+    display: inline-block;
+    border-radius: 10px;
 }
 
 table#EncounterTable td{
