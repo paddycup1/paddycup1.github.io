@@ -1,11 +1,17 @@
 body{
-    background-image: url("Gw2-64 2017-10-21 23-42-08.jpg");
+    background-image: url("Gw2-64 2017-10-21 23-42-08_1080.jpg");
     /*background: rgb(20,20,30);*/
     font-family: "Courier New", Courier, monospace;
     font-stretch: : 100;
     text-align: center;
     font-weight: bold;
     /*text-shadow: 1px 1px 1px black;*/
+}
+
+@media screen and (min-width: 1921px) {
+    body {
+        background-color: url("Gw2-64 2017-10-21 23-42-08.jpg");;
+    }
 }
 
 header.Big {
