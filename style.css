@@ -157,7 +157,7 @@ a:active {
     color: rgb(200,200,200);
 } 
 
-@media only screen and (max-width: 1080px) {
+/*@media only screen and (max-width: 1080px) {
     dd.WeekList{
         width: 100%;
         display: block;
@@ -183,4 +183,4 @@ a:active {
         padding-left: 0;
         padding-right: 0;
     }
-}
+}*/
