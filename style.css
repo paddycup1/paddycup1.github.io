@@ -66,6 +66,9 @@ div.LeftList{
     padding: 0.5em;
     margin-top: 3em !important;
 }
+
+
+
 p{
     color: rgb(200,200,200);
 	font-size: 1.5em;
@@ -81,7 +84,6 @@ dd{
 dd.WeekList{
     color: rgb(200,200,200);
     font-size: 1.7em;
-    margin: 0.5em;
     margin-bottom: 1em;
     padding: 0.7em;
     width: auto;
@@ -154,3 +156,31 @@ a:hover {
 a:active {
     color: rgb(200,200,200);
 } 
+
+@media only screen and (max-width: 1080px) {
+    dd.WeekList{
+        width: 100%;
+        display: block;
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    div.CenterList{
+        width: 100%;
+        display: block;
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    div.LeftList{
+        width: 100%;
+        display: block;
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
