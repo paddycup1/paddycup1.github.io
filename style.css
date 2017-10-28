@@ -158,9 +158,6 @@ a:active {
 } 
 
 @media only screen and (max-width: 1080px) {
-    body{
-        font-size: 0.6em;
-    }
     dd.WeekList{
         width: 100%;
         display: block;
