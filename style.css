@@ -158,6 +158,10 @@ a:active {
 } 
 
 @media only screen and (max-width: 1080px) {
+    table#EncounterTable{
+        font-size: 12px;
+    }
+
     table#EncounterTable td{
         font-size: 1em;
     }
@@ -210,6 +214,10 @@ a:active {
     }
 
     p{
+        font-size: 1em;
+    }
+
+    dd{
         font-size: 1em;
     }
 }
