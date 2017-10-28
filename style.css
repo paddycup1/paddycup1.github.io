@@ -160,6 +160,8 @@ a:active {
 @media only screen and (max-width: 1080px) {
     table#EncounterTable{
         font-size: 12px;
+        display: inline-block;
+        border: none;
     }
 
     table#EncounterTable td{
