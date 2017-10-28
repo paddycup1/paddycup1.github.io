@@ -5,7 +5,14 @@ body{
     font-stretch: : 100;
     text-align: center;
     font-weight: bold;
+    margin: 0px;
     /*text-shadow: 1px 1px 1px black;*/
+}
+
+div#Container{
+    overflow: auto;
+    padding: 0px;
+    margin: 0px;
 }
 
 @media only screen and (min-width: 1921px) {
