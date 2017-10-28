@@ -158,6 +158,9 @@ a:active {
 } 
 
 @media only screen and (max-width: 1080px) {
+    header{
+        font-size: 0.7em;
+    }
     dd.WeekList{
         width: 100%;
         display: block;
@@ -165,6 +168,7 @@ a:active {
         margin-right: 0;
         padding-left: 0;
         padding-right: 0;
+        font-size: 0.7em;
     }
     div.CenterList{
         width: 100%;
@@ -173,6 +177,7 @@ a:active {
         margin-right: 0;
         padding-left: 0;
         padding-right: 0;
+        font-size: 0.7em;
     }
 
     div.LeftList{
