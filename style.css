@@ -158,9 +158,13 @@ a:active {
 } 
 
 @media only screen and (max-width: 1080px) {
-    table#EncounterTable th{
+    table#EncounterTable td{
         font-size: 1em;
     }
+
+    table#EncounterTable th{
+        font-size: 1.2em;
+    }    
 
     header.Big {
         font-size: 2em;
@@ -178,13 +182,6 @@ a:active {
         /*text-shadow: 2px 2px 1px black;*/
     }
 
-    table#EncounterTable th{
-        font-size: 1.2em;
-        color: rgb(230,230,230);
-        border: 2px solid rgb(200,200,200);
-        padding: 0.4em;
-        /*text-shadow: 2px 2px 1px black;*/
-    }
     dd.WeekList{
         width: 100%;
         font-size: 1em;
@@ -210,5 +207,9 @@ a:active {
         margin-right: 0;
         padding-left: 0;
         padding-right: 0;
+    }
+
+    p{
+        font-size: 1em;
     }
 }
