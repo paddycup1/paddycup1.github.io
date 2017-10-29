@@ -139,10 +139,10 @@ td.Slash{
 @keyframes FailTextFloat {
     from {
         text-shadow: 0px 0px 0px black;
-        color: rgb(200,25,25);
+        color: rgb(180,15,15);
     }
     to {
-        color: rgb(180,15,15);
+        color: rgb(210,25,25);
         text-shadow: 5px 5px 2px black;
     }
 }
@@ -176,11 +176,11 @@ a:active {
 } 
 
 a.FailRecord:link {
-    color: rgb(200,25,25);
+    color: rgb(180,15,15);
 }
 
 a.FailRecord:visited {
-    color: rgb(200,25,25);
+    color: rgb(180,15,15);
 }
 
 a.FailRecord:hover{
@@ -188,7 +188,7 @@ a.FailRecord:hover{
 }
 
 a.FailRecord:active {
-    color: rgb(200,25,25);
+    color: rgb(180,15,15);
 } 
 
 @media only screen and (max-width: 1080px) {
