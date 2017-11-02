@@ -151,6 +151,7 @@ a{
 	color: rgb(200,200,200);
 	text-decoration: none;
     font-weight: bold;
+    transition: color 0.1s, text-shadow 0.1s;
 }
 
  /* unvisited link */
@@ -165,9 +166,8 @@ a:visited {
 
 /* mouse over link */
 a:hover {
-    animation-name: TextFloat;
-    animation-duration: 0.1s;
-    animation-fill-mode:forwards;
+    color: rgb(255,255,255);
+    text-shadow: 5px 5px 2px black;
 }
 
 /* selected link */
@@ -184,7 +184,8 @@ a.FailRecord:visited {
 }
 
 a.FailRecord:hover{
-    animation-name: FailTextFloat;
+    color: rgb(210,25,25);
+    text-shadow: 5px 5px 2px black;
 }
 
 a.FailRecord:active {
@@ -261,4 +262,54 @@ a.FailRecord:active {
     dd{
         font-size: 1em;
     }
+}
+
+.Dropdown {            
+    display: inline-block;
+}
+
+.DropdownContent {
+    display: block;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    width: 100%;
+    border-radius: 8px;
+    transition: max-height 0.4s, padding 0.4s;
+    max-height: 0px;
+    overflow: auto;
+}
+
+.Dropdown:hover + .DropdownContent {
+    max-height: 300px;
+    padding: 12px 0px;
+}
+.DropdownContent:hover {
+    max-height: 300px;
+    padding: 12px 0px;
+}
+
+.DropdownContainer{
+    position: relative;
+}
+
+span.Fail{
+    color: rgb(150,150,150);
+    transition: color 0.1s, text-shadow 0.1s, font-weight 0.1s;
+}
+
+.DropdownContainer:hover span.Fail {
+    color: rgb(210,25,25);
+    text-shadow: 5px 5px 2px black;
+    font-weight: bold;
+}
+
+.DropdownContent a{
+    color: rgb(125,125,125);
+}
+
+.DropdownContent a:hover{
+    color: rgb(150,20,20);
+    text-shadow: 0px 0px 0px black;
 }
