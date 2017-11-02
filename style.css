@@ -125,28 +125,6 @@ td.Slash{
     background: linear-gradient(to right top, #ffffff00 0%,#ffffff00 48.9%,#B1B1B1 49%,#B1B1B1 51%,#ffffff00 51.1%,#ffffff00 100%);
 }
 
-@keyframes TextFloat {
-    from {
-    	text-shadow: 0px 0px 0px black;
-    	color: rgb(200,200,200);
-    }
-    to {
-    	color: rgb(255,255,255);
-    	text-shadow: 5px 5px 2px black;
-    }
-}
-
-@keyframes FailTextFloat {
-    from {
-        text-shadow: 0px 0px 0px black;
-        color: rgb(150,150,150);
-    }
-    to {
-        color: rgb(210,25,25);
-        text-shadow: 5px 5px 2px black;
-    }
-}
-
 a{
 	color: rgb(200,200,200);
 	text-decoration: none;
@@ -154,43 +132,11 @@ a{
     transition: color 0.1s, text-shadow 0.1s;
 }
 
- /* unvisited link */
-a:link {
-    color: rgb(200,200,200);
-}
-
-/* visited link */
-a:visited {
-    color: rgb(200,200,200);
-}
-
 /* mouse over link */
 a:hover {
     color: rgb(255,255,255);
     text-shadow: 5px 5px 2px black;
 }
-
-/* selected link */
-a:active {
-    color: rgb(255,255,255);
-} 
-
-a.FailRecord:link {
-    color: rgb(150,150,150);
-}
-
-a.FailRecord:visited {
-    color: rgb(150,150,150);
-}
-
-a.FailRecord:hover{
-    color: rgb(210,25,25);
-    text-shadow: 5px 5px 2px black;
-}
-
-a.FailRecord:active {
-    color: rgb(150,150,150);
-} 
 
 @media only screen and (max-width: 1080px) {
     table#EncounterTable{
@@ -272,7 +218,7 @@ a.FailRecord:active {
     display: block;
     position: absolute;
     background-color: #f9f9f9;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 8px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
     width: 100%;
     border-radius: 8px;
