@@ -9,26 +9,30 @@
     <script src="CommonScripts.js"></script>
     <link rel="icon" href=".POF_logo.png" type="image/x-icon">
     <style type="text/css">
-        .dropdown {
-            position: relative;
+        .dropdown {            
+            display: inline-block;
         }
 
         .dropdown-content {
             display: block;
             position: absolute;
             background-color: #f9f9f9;
-            width: 100%;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
+            width: 100%;
             border-radius: 8px;
             transition: max-height 0.4s, padding 0.4s;
             max-height: 0px;
             overflow: auto;
         }
-        .dropdown:hover .dropdown-content {
+   
+        .dropdown:hover + .dropdown-content {
             max-height: 300px;
             padding: 12px 0px;
-            
+        }
+        .dropdown-content:hover {
+            max-height: 300px;
+            padding: 12px 0px;
         }
 
     </style>
@@ -69,7 +73,7 @@
                     <td class="Slash"></td>
                     <td class="Slash"></td>
                     <td class="Slash"></td>
-                    <td><div class="dropdown">Deimos<div class="dropdown-content">Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br></div></div></td>
+                    <td><div style="position: relative;"><div class="dropdown"><a href="123">Deimos</a></div><div class="dropdown-content">Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br>Test<br></div></div></td>
                 </tr>
             </table>
         </div>
