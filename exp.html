@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"> 
+    <title>2017 Week 44 Raid Records</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Sura" rel="stylesheet"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="CommonScripts.js"></script>
+    <link rel="icon" href=".POF_logo.png" type="image/x-icon">
+    <style type="text/css">
+        div.WingContainer{
+            width: 50%;
+            font-size: 20px;
+            color: rgb(200,200,200);
+            border-radius: 20px;
+            background-color: rgba(120,120,120,0.4);
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        div.WingHeader{
+            font-size: 30px;
+            color: rgb(255,255,255);
+            border-radius: 20px;
+            background-color: rgba(120,120,120,0.4);;
+        }
+
+        div.WingBossList{
+            max-height: 0px;
+            transition: max-height 2s;
+            overflow: hidden;
+        }
+
+        div.WingContainer:hover div.WingBossList{
+            max-height: 500px;
+        }
+    </style>
+</head>
+<body onload="ResizeContainer()">
+    <div id="Container">
+        <div class="WingContainer">
+            <div class="WingHeader"><header>Wing1</header></div>
+            <div class="WingBossList">
+                <div clas="WingBoss">Vale Guardian</div>
+                <div clas="WingBoss">Gorseval the Multifarious</div>
+                <div clas="WingBoss">Sabetha the Saboteur</div>
+            </div>
+        </div>
+        <div class="WingContainer">
+            <div class="WingHeader"><header>Wing2</header></div>
+            <div class="WingBossList">
+                <div clas="WingBoss">Slothasor</div>
+                <div clas="WingBoss">Prison Camp</div>
+                <div clas="WingBoss">Matthias Gabrel</div>
+            </div>
+        </div>
+        <div class="WingContainer">
+            <div class="WingHeader"><header>Wing3</header></div>
+            <div class="WingBossList">
+                <div clas="WingBoss">Siege the Stronghold</div>
+                <div clas="WingBoss">Keep Construct</div>
+                <div clas="WingBoss">Xera</div>
+            </div>
+        </div>
+        <div class="WingContainer">
+            <div class="WingHeader"><header>Wing4</header></div>
+            <div class="WingBossList">
+                <div clas="WingBoss">Cairn the Indomitable</div>
+                <div clas="WingBoss">Mursaat Overseer</div>
+                <div clas="WingBoss">Samarog</div>
+                <div clas="WingBoss">Deimos</div>
+            </div>
+        </div>
+        <a href="index.html" style="font-size: 1.5em;">Back</a>
+    </div>
+</body>
+</html>
