@@ -14,15 +14,14 @@
             transition:  visibility 1s;
             width: 50%;
             font-size: 20px;
-            color: rgb(200,200,200);
             border-radius: 20px;
             background-color: rgba(120,120,120,0.4);
-            margin-top: 20px;
-            margin-bottom: 20px;
+            margin-top: 2em;
+            margin-bottom: 2em;
         }
 
         div.WingHeader{
-            font-size: 30px;
+            font-size: 2em;
             color: rgb(255,255,255);
             border-radius: 20px;
             background-color: rgba(120,120,120,0.4);;
@@ -30,12 +29,15 @@
 
         div.WingBossList{
             transition: height 0.5s;
-            overflow: hidden;
+            overflow: auto;
         }
 
-        /*div.WingContainer:hover div.WingBossList{
-            height: auto;
-        }*/
+        div.WingBoss{
+            font-size: 1.5em;
+            color: rgb(150,150,150);
+            margin: 1em 0;
+            font-weight: normal;
+        }
 
         @media only screen and (max-width: 1080px) {
             div.WingContainer{
@@ -49,34 +51,42 @@
         <div class="WingContainer">
             <div class="WingHeader">Wing1</div>
             <div class="WingBossList">
-                <div clas="WingBoss">Vale Guardian</div>
-                <div clas="WingBoss">Gorseval the Multifarious</div>
-                <div clas="WingBoss">Sabetha the Saboteur</div>
+                <div class="WingBoss"><a href="123">Vale Guardian</a></div>
+                <div class="WingBoss">Gorseval the Multifarious</div>
+                <div class="WingBoss">Sabetha the Saboteur</div>
             </div>
         </div>
         <div class="WingContainer">
             <div class="WingHeader"><header>Wing2</header></div>
             <div class="WingBossList">
-                <div clas="WingBoss">Slothasor</div>
-                <div clas="WingBoss">Prison Camp</div>
-                <div clas="WingBoss">Matthias Gabrel</div>
+                <div class="WingBoss">Slothasor</div>
+                <div class="WingBoss">Prison Camp</div>
+                <div class="WingBoss">Matthias Gabrel</div>
             </div>
         </div>
         <div class="WingContainer">
             <div class="WingHeader"><header>Wing3</header></div>
             <div class="WingBossList">
-                <div clas="WingBoss">Siege the Stronghold</div>
-                <div clas="WingBoss">Keep Construct</div>
-                <div clas="WingBoss">Xera</div>
+                <div class="WingBoss">Siege the Stronghold</div>
+                <div class="WingBoss">Keep Construct</div>
+                <div class="WingBoss">Xera</div>
             </div>
         </div>
         <div class="WingContainer">
             <div class="WingHeader"><header>Wing4</header></div>
             <div class="WingBossList">
-                <div clas="WingBoss">Cairn the Indomitable</div>
-                <div clas="WingBoss">Mursaat Overseer</div>
-                <div clas="WingBoss">Samarog</div>
-                <div clas="WingBoss">Deimos</div>
+                <div class="WingBoss">Cairn the Indomitable</div>
+                <div class="WingBoss">Mursaat Overseer</div>
+                <div class="WingBoss">Samarog</div>
+                <div class="WingBoss"><div class="DropdownContainer"><div class="Dropdown"><span class="Fail">Deimos</span></div><div class="DropdownContent">
+                        <a href="https://dps.report/cnKj-20171102-232419_dei">2:04</a><br>
+                        <a href="https://dps.report/j91A-20171102-233228_dei">6:11</a><br>
+                        <a href="https://dps.report/WOM8-20171102-233440_dei">0:17</a><br>
+                        <a href="https://dps.report/RLrZ-20171102-234104_dei">2:34</a><br>
+                        <a href="https://dps.report/IvNK-20171102-234546_dei">2:48</a><br>
+                        <a href="https://dps.report/Srgt-20171102-235431_dei">6:05</a><br>
+                        <a href="https://dps.report/A1A9-20171103-000348_dei">3:59</a><br>
+                    </div></div></div>
             </div>
         </div>
         <a href="index.html" style="font-size: 1.5em;">Back</a>
