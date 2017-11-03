@@ -16,6 +16,11 @@ function InitBossList(){
     for (i=0; i < Lists.length; i++){
         Lists[i].addEventListener("click", SwitchBossList);
     }
+
+    Lists=document.getElementsByClassName('WingContainer');
+    for (i=0; i < Lists.length; i++){
+        Lists[i].style.visibility = "visible";
+    }
 }
 
 function SwitchBossList(event){
