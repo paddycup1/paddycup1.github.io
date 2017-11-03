@@ -6,7 +6,7 @@ function ResizeContainer(){
 }
 
 function InitBossList(){
-    var Lists=document.getElementsByClassName('WingBossList');
+    var Lists = document.getElementsByClassName('WingBossList');
     for (i=0; i < Lists.length; i++){
         Lists[i].originalHeight = Lists[i].clientHeight;
         Lists[i].style.height = "0px";
