@@ -27,14 +27,13 @@
         }
 
         div.WingBossList{
-            max-height: 0px;
-            transition: max-height 2s;
+            transition: height 0.5s;
             overflow: hidden;
         }
 
-        div.WingContainer:hover div.WingBossList{
-            max-height: 500px;
-        }
+        /*div.WingContainer:hover div.WingBossList{
+            height: auto;
+        }*/
 
         @media only screen and (max-width: 1080px) {
             div.WingContainer{
@@ -43,10 +42,10 @@
         }
     </style>
 </head>
-<body onload="ResizeContainer()">
+<body onload="ResizeContainer(),InitBossList()">
     <div id="Container">
         <div class="WingContainer">
-            <div class="WingHeader"><header>Wing1</header></div>
+            <div class="WingHeader">Wing1</div>
             <div class="WingBossList">
                 <div clas="WingBoss">Vale Guardian</div>
                 <div clas="WingBoss">Gorseval the Multifarious</div>
