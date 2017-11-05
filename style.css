@@ -241,7 +241,7 @@ a:hover {
 }
 
 span.Fail{
-    color: rgb(150,150,150);
+    color: rgb(200,50,50);
     transition: color 0.1s, text-shadow 0.1s, font-weight 0.1s;
 }
 
