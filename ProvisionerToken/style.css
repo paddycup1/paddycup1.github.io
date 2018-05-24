@@ -1,6 +1,7 @@
 body {
     background: rgb(21, 25, 34);
     color: whitesmoke;
+    font-family: 'Inconsolata', monospace;
 }
 
 table {
@@ -18,6 +19,7 @@ td {
 th {
     border: 1px solid white;
     padding: 10px;
+    font-size: 1.1em;
 }
 
 .divider td {
@@ -38,7 +40,7 @@ td.price {
 
 .button:hover {
     background: rgb(47, 50, 77);
-    color: rgb(208, 213, 243);
+    color: rgb(208, 232, 243);
 }
 
 .button:active {
