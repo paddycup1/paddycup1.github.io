@@ -37,8 +37,8 @@ td.price {
 }
 
 .button:hover {
-    background: rgb(189, 189, 189);
-    color: black;
+    background: rgb(47, 50, 77);
+    color: rgb(208, 213, 243);
 }
 
 .button:active {
