@@ -223,9 +223,8 @@
     
     function copyText() {
       let text = this.innerText;
-      this.className += " visited";
       navigator.clipboard.writeText(text).then(function() {
-        console.log('Async: Copying to clipboard was successful!');
+        this.className += " visited";
       }, function(err) {
         console.error('Async: Could not copy text: ', err);
       });
