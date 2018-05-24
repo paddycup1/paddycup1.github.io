@@ -100,7 +100,7 @@
       let completeCount = 0;
       let onComplete = () => {
         completeCount += 1;
-        if (completeCount == ItemLinks.length + ItemLinks.length) {
+        if (completeCount == ItemLinks.length << 1) {
           for (let i = 0; i < AGENT_COUNT; i++) {
             let agentBaseIndex = i * ITEM_PER_AGENT;
             let bestBuyIndex = 0;
@@ -142,7 +142,6 @@
     }
     
     function getPrice(str, item, onComplete) {
-      //return ImportJSON("https://api.guildwars2.com/v2/commerce/prices/" + getItemId(str), "/buys/unit_price", "noInherit,noTruncate,noHeaders");
       let request = new XMLHttpRequest();
       let url = "https://api.guildwars2.com/v2/commerce/prices/" + getItemId(str);
       request.open("GET", url);
