@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">    
+  <title>Provisioner Token</title>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script type="text/javascript">
+    const ITEM_PER_AGENT = 6;
+    const AGENT_COUNT = 12;
+    let ItemLinks = [
+      "[&AgHJtAAA]",
+      "[&AgFqtAAA]",
+      "[&AgHYswAA]",
+      "[&AgE2sgAA]",
+      "[&AgHFsgAA]",
+      "[&AgGjsgAA]",
+      "[&AgFpPAAA]",
+      "[&AgGFOAAA]",
+      "[&AgFkNgAA]",
+      "[&AgHOKQAA]",
+      "[&AgFkLgAA]",
+      "[&AgFxKwAA]",
+      "[&AgEiPAAA]",
+      "[&AgG1OAAA]",
+      "[&AgFHNgAA]",
+      "[&AgHiKQAA]",
+      "[&AgEWLgAA]",
+      "[&AgEfLAAA]",
+      "[&AgGrjwAA]",
+      "[&AgGOjwAA]",
+      "[&AgHNjwAA]",
+      "[&AgGKjwAA]",
+      "[&AgEbkAAA]",
+      "[&AgEckAAA]",
+      "[&AgGUPAAA]",
+      "[&AgEEOQAA]",
+      "[&AgGWNgAA]",
+      "[&AgHWKQAA]",
+      "[&AgE7LgAA]",
+      "[&AgHwKwAA]",
+      "[&AgHAlQAA]",
+      "[&AgHflQAA]",
+      "[&AgEPlgAA]",
+      "[&AgEjlQAA]",
+      "[&AgF4lQAA]",
+      "[&AgFUlQAA]",
+      "[&AgFDPAAA]",
+      "[&AgE4OQAA]",
+      "[&AgFoNgAA]",
+      "[&AgHLKQAA]",
+      "[&AgHqLQAA]",
+      "[&AgGfKwAA]",
+      "[&AgH4OwAA]",
+      "[&AgHmOAAA]",
+      "[&AgFHNgAA]",
+      "[&AgHiKQAA]",
+      "[&AgEWLgAA]",
+      "[&AgEfLAAA]",
+      "[&AgGYPAAA]",
+      "[&AgG0OAAA]",
+      "[&AgFGNgAA]",
+      "[&AgHTKQAA]",
+      "[&AgFpLgAA]",
+      "[&AgF2KwAA]",
+      "[&AgE/PAAA]",
+      "[&AgFcOAAA]",
+      "[&AgGVNgAA]",
+      "[&AgHVKQAA]",
+      "[&AgE6LgAA]",
+      "[&AgHvKwAA]",
+      "[&AgEfPAAA]",
+      "[&AgHjOAAA]",
+      "[&AgGYNgAA]",
+      "[&AgHDKQAA]",
+      "[&AgGRLgAA]",
+      "[&AgFNLAAA]",
+      "[&AgGrjwAA]",
+      "[&AgHMjwAA]",
+      "[&AgGsjwAA]",
+      "[&AgHGjwAA]",
+      "[&AgHqjwAA]",
+      "[&AgHsjwAA]"];
+  
+  function onload(){
+    for(let i = 0; i < AGENT_COUNT; i++){
+      document.getElementById("BuyItem" + (i + 1)).addEventListener("click", copyText);
+      document.getElementById("SellItem" + (i + 1)).addEventListener("click", copyText);
+
+    }
+    loadTable();
+  }
+
+  function loadTable(){
+    let items = new Array(ItemLinks.length);
+    let completeCount = 0;
+    let onComplete = () => {
+          completeCount += 1;
+          if(completeCount == ItemLinks.length + ItemLinks.length){
+            for(let i = 0; i < AGENT_COUNT; i++){
+              let agentBaseIndex = i * ITEM_PER_AGENT;
+              let bestBuyIndex = 0;
+              let bestSellIndex = 0;
+              
+              for(let j = 1; j < ITEM_PER_AGENT; j++){
+                if(items[agentBaseIndex + j].buy < items[agentBaseIndex + bestBuyIndex].buy){
+                  bestBuyIndex = j;
+                }
+                if(items[agentBaseIndex + j].sell < items[agentBaseIndex + bestSellIndex].sell){
+                  bestSellIndex = j;
+                }
+              }
+              document.getElementById("BuyItem" + (i + 1)).innerText = items[agentBaseIndex + bestBuyIndex].name;
+              document.getElementById("BuyPrice" + (i + 1)).innerText = numberToG(items[agentBaseIndex + bestBuyIndex].buy);
+              document.getElementById("SellItem" + (i + 1)).innerText = items[agentBaseIndex + bestSellIndex].name;
+              document.getElementById("SellPrice" + (i + 1)).innerText = numberToG(items[agentBaseIndex + bestSellIndex].sell);
+            }
+          }
+        };
+    
+    for(let i = 0; i < AGENT_COUNT; i++){
+      document.getElementById("BuyItem" + (i + 1)).innerText = "loading...";
+      document.getElementById("BuyPrice" + (i + 1)).innerText = "loading...";
+      document.getElementById("SellItem" + (i + 1)).innerText = "loading...";
+      document.getElementById("SellPrice" + (i + 1)).innerText = "loading...";
+    }
+
+    for(let i = 0; i < ItemLinks.length; i++){
+      items[i] = {};
+      getName(ItemLinks[i], items[i], onComplete);
+      getPrice(ItemLinks[i], items[i], onComplete);
+    }
+    return items;
+  }
+  
+  function getItemId(str){
+    return (getItemByte(str,4) << 16) + (getItemByte(str, 3) << 8) + getItemByte(str, 2);
+  }
+
+  function getPrice(str, item, onComplete){
+    //return ImportJSON("https://api.guildwars2.com/v2/commerce/prices/" + getItemId(str), "/buys/unit_price", "noInherit,noTruncate,noHeaders");
+    let request = new XMLHttpRequest();
+    let url = "https://api.guildwars2.com/v2/commerce/prices/" + getItemId(str);
+    request.open("GET", url);
+    request.onload = () => {
+      let data = JSON.parse(request.response);
+      item.sell = data.sells.unit_price;
+      item.buy = data.buys.unit_price;
+      if(onComplete){
+        onComplete();
+      }
+    }
+    request.send();
+  }
+
+  function getName(str, item, onComplete){
+    let request = new XMLHttpRequest();
+    let url = "https://api.guildwars2.com/v2/items/" + getItemId(str) + "?lang=en";
+    request.open("GET", url);
+    request.onload = () => {
+      let data = JSON.parse(request.response);
+      item.name = data.name;
+      if(onComplete){
+        onComplete();
+      }
+    }
+    request.send();
+  }
+
+  function numberToG(num){
+    if(num >= 10000){
+      return "" + Math.floor(num/10000) + "G " + (((num / 100) % 100) > 10 ? "" : "0") + Math.floor((num / 100) % 100) + "S " + ((num % 100) > 10 ? "":"0") + num % 100 + "C";
+    }else if(num >= 100){
+      return "" + Math.floor(num / 100) + "S " + ((num % 100) > 10 ? "" : "0") + num % 100 + "C";
+    }else{
+      return "" + num + "C"
+    }
+  }
+
+  function getItemByte(str, i){
+    switch(i){
+      case 0:
+        return (BASE64(str.substr(2, 4)) >> 16) & 0xFF;
+      case 1:
+        return (BASE64(str.substr(2, 4)) >> 8) & 0xFF;
+      case 2:
+        return BASE64(str.substr(2, 4)) & 0xFF;
+      case 3:
+        return (BASE64(str.substr(6, 4)) >> 16) & 0xFF;
+      case 4:
+        return (BASE64(str.substr(6, 4)) >> 8) & 0xFF;
+      case 5:
+        return BASE64(str.substr(6, 4)) & 0xFF;
+    }
+  }
+
+  function BASE64(str) {
+    let ret = 0;
+    for(let i = 0; i < str.length; i++){
+      ret = ret << 6;
+      ret += char64(str[i]);
+    }
+    return ret;
+  }
+
+  function char64(ch){
+    if(ch.charCodeAt(0) >= 'A'.charCodeAt(0) && ch.charCodeAt(0) <= 'Z'.charCodeAt(0)){
+      return ch.charCodeAt(0) - 'A'.charCodeAt(0);
+    }else if(ch.charCodeAt(0) >= 'a'.charCodeAt(0) && ch.charCodeAt(0) <= 'z'.charCodeAt(0)){
+      return ch.charCodeAt(0) - 'a'.charCodeAt(0) + 26;
+    }else if(ch.charCodeAt(0) >= '0'.charCodeAt(0) && ch.charCodeAt(0) <= '9'.charCodeAt(0)){
+      return ch.charCodeAt(0) - '0'.charCodeAt(0) + 52;
+    }else if(ch.charCodeAt(0) == '+'.charCodeAt(0)){
+      return 62;
+    }else if(ch.charCodeAt(0) == '/'.charCodeAt(0)){
+      return 63;
+    }
+    return 0;
+  }
+
+  function copyText(){
+    let text = this.innerText;
+    navigator.clipboard.writeText(text).then(function() {
+    console.log('Async: Copying to clipboard was successful!');
+  }, function(err) {
+    console.error('Async: Could not copy text: ', err);
+  });
+  }
+  </script>
+</head>
+<body onload="onload()">
+  <table>
+    <tbody>
+      <tr>
+        <th>Map</th>
+        <th>Agent Name</th>
+        <th>Waypoint</th>
+        <th>Best Buy Item</th>
+        <th>Buy Price</th>
+        <th>Best Sell Item (Instantly Buy)</th>
+        <th>Sell Price</th>
+      </tr>
+      <tr class="divider">
+        <td rowspan="5">Verdant Brink</td>
+        <td>Quartermaster Natomi</td>
+        <td>[&BN4HAAA=]</td>
+        <td id="BuyItem1"></td>
+        <td id="BuyPrice1"></td>
+        <td id="SellItem1"></td>
+        <td id="SellPrice1"></td>
+      </tr>
+      <tr>
+        <td>Supplymaster Kani</td>
+        <td>[&BOAHAAA=]</td>
+        <td id="BuyItem2"></td>
+        <td id="BuyPrice2"></td>
+        <td id="SellItem2"></td>
+        <td id="SellPrice2"></td>
+      </tr>
+      <tr>
+        <td>Quartermaster Vec</td>
+        <td>[&BAgIAAA=]</td>
+        <td id="BuyItem3"></td>
+        <td id="BuyPrice3"></td>
+        <td id="SellItem3"></td>
+        <td id="SellPrice3"></td>
+      </tr>
+      <tr>
+        <td>Quartermaster Ival</td>
+        <td>[&BNUHAAA=]</td>
+        <td id="BuyItem4"></td>
+        <td id="BuyPrice4"></td>
+        <td id="SellItem4"></td>
+        <td id="SellPrice4"></td>
+      </tr>
+      <tr>
+        <td>Steward Katren</td>
+        <td>[&BO8HAAA=]</td>
+        <td id="BuyItem5"></td>
+        <td id="BuyPrice5"></td>
+        <td id="SellItem5"></td>
+        <td id="SellPrice5"></td>
+      </tr>
+
+      <tr class="divider">
+        <td rowspan="3">Auric Basin</td>
+        <td>Supplymaster Azzi</td>
+        <td>[&BN0HAAA=]</td>
+        <td id="BuyItem6"></td>
+        <td id="BuyPrice6"></td>
+        <td id="SellItem6"></td>
+        <td id="SellPrice6"></td>
+      </tr>
+      <tr>
+        <td>Scavenger Rakatin</td>
+        <td>[&BAYIAAA=]</td>
+        <td id="BuyItem7"></td>
+        <td id="BuyPrice7"></td>
+        <td id="SellItem7"></td>
+        <td id="SellPrice7"></td>
+      </tr>
+      <tr>
+        <td>Forager Polly</td>
+        <td>[&BAIIAAA=]</td>
+        <td id="BuyItem8"></td>
+        <td id="BuyPrice8"></td>
+        <td id="SellItem8"></td>
+        <td id="SellPrice8"></td>
+      </tr>
+
+      <tr class="divider">
+        <td rowspan="4">Tangled Depths</td>
+        <td>Supplier Huanya</td>
+        <td>[&BAwIAAA=]</td>
+        <td id="BuyItem9"></td>
+        <td id="BuyPrice9"></td>
+        <td id="SellItem9"></td>
+        <td id="SellPrice9"></td>
+      </tr>
+      <tr>
+        <td>Jatt</td>
+        <td>[&BAMIAAA=]</td>
+        <td id="BuyItem10"></td>
+        <td id="BuyPrice10"></td>
+        <td id="SellItem10"></td>
+        <td id="SellPrice10"></td>
+      </tr>
+      <tr>
+        <td>Supply Assistant</td>
+        <td>[&BMwHAAA=]</td>
+        <td id="BuyItem11"></td>
+        <td id="BuyPrice11"></td>
+        <td id="SellItem11"></td>
+        <td id="SellPrice11"></td>
+      </tr>
+      <tr>
+        <td>Terrill Tinkerclaw</td>
+        <td>[&BAAIAAA=]</td>
+        <td id="BuyItem12"></td>
+        <td id="BuyPrice12"></td>
+        <td id="SellItem12"></td>
+        <td id="SellPrice12"></td>
+      </tr>
+      <tfoot class="divider">
+        <td colspan="7">
+          <span class="button" onclick="loadTable()">Reload</span>
+        </td>
+      </tfoor>
+    </tbody>
+  </table>
+</body3
+</html5

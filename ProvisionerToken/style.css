@@ -1,0 +1,27 @@
+body{
+  background: black;
+  color: whitesmoke;
+}
+
+table{
+  border: 4px solid white;
+  border-collapse: collapse;
+}
+
+td {
+  border: 1px solid white;
+  padding: 5px;
+}
+
+th {
+  border: 1px solid white;
+  padding: 10px;
+}
+
+.divider td{
+  border-top: 3px solid white;
+}
+
+tfoot{
+  text-align: center;
+}
