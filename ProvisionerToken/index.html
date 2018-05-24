@@ -86,7 +86,6 @@
     for(let i = 0; i < AGENT_COUNT; i++){
       document.getElementById("BuyItem" + (i + 1)).addEventListener("click", copyText);
       document.getElementById("SellItem" + (i + 1)).addEventListener("click", copyText);
-
     }
     loadTable();
   }
@@ -218,8 +217,13 @@
     return 0;
   }
 
-  function copyText(){
-    let text = this.innerText;
+  function copyText(str){
+    let text;
+    if(str){
+      text = str;
+    }else{
+      text = this.innerText;
+    }
     navigator.clipboard.writeText(text).then(function() {
     console.log('Async: Copying to clipboard was successful!');
   }, function(err) {
@@ -243,107 +247,107 @@
       <tr class="divider">
         <td rowspan="5">Verdant Brink</td>
         <td>Quartermaster Natomi</td>
-        <td>[&BN4HAAA=]</td>
-        <td id="BuyItem1"></td>
-        <td id="BuyPrice1"></td>
-        <td id="SellItem1"></td>
-        <td id="SellPrice1"></td>
+        <td onclick="copyText(this.innerText)" class="button">[&BN4HAAA=]</td>
+        <td id="BuyItem1" class="button"></td>
+        <td id="BuyPrice1" class="price"></td>
+        <td id="SellItem1" class="button"></td>
+        <td id="SellPrice1" class="price"></td>
       </tr>
       <tr>
         <td>Supplymaster Kani</td>
-        <td>[&BOAHAAA=]</td>
-        <td id="BuyItem2"></td>
-        <td id="BuyPrice2"></td>
-        <td id="SellItem2"></td>
-        <td id="SellPrice2"></td>
+        <td onclick="copyText(this.innerText)" class="button">[&BOAHAAA=]</td>
+        <td id="BuyItem2" class="button"></td>
+        <td id="BuyPrice2" class="price"></td>
+        <td id="SellItem2" class="button"></td>
+        <td id="SellPrice2" class="price"></td>
       </tr>
       <tr>
         <td>Quartermaster Vec</td>
-        <td>[&BAgIAAA=]</td>
-        <td id="BuyItem3"></td>
-        <td id="BuyPrice3"></td>
-        <td id="SellItem3"></td>
-        <td id="SellPrice3"></td>
+        <td onclick="copyText(this.innerText)" class="button">[&BAgIAAA=]</td>
+        <td id="BuyItem3" class="button"></td>
+        <td id="BuyPrice3" class="price"></td>
+        <td id="SellItem3" class="button"></td>
+        <td id="SellPrice3" class="price"></td>
       </tr>
       <tr>
         <td>Quartermaster Ival</td>
-        <td>[&BNUHAAA=]</td>
-        <td id="BuyItem4"></td>
-        <td id="BuyPrice4"></td>
-        <td id="SellItem4"></td>
-        <td id="SellPrice4"></td>
+        <td onclick="copyText(this.innerText)" class="button">[&BNUHAAA=]</td>
+        <td id="BuyItem4" class="button"></td>
+        <td id="BuyPrice4" class="price"></td>
+        <td id="SellItem4" class="button"></td>
+        <td id="SellPrice4" class="price"></td>
       </tr>
       <tr>
         <td>Steward Katren</td>
-        <td>[&BO8HAAA=]</td>
-        <td id="BuyItem5"></td>
-        <td id="BuyPrice5"></td>
-        <td id="SellItem5"></td>
-        <td id="SellPrice5"></td>
+        <td onclick="copyText(this.innerText)" class="button">[&BO8HAAA=]</td>
+        <td id="BuyItem5" class="button"></td>
+        <td id="BuyPrice5" class="price"></td>
+        <td id="SellItem5" class="button"></td>
+        <td id="SellPrice5" class="price"></td>
       </tr>
 
       <tr class="divider">
         <td rowspan="3">Auric Basin</td>
         <td>Supplymaster Azzi</td>
-        <td>[&BN0HAAA=]</td>
-        <td id="BuyItem6"></td>
-        <td id="BuyPrice6"></td>
-        <td id="SellItem6"></td>
-        <td id="SellPrice6"></td>
+        <td onclick="copyText(this.innerText)" class="button">[&BN0HAAA=]</td>
+        <td id="BuyItem6" class="button"></td>
+        <td id="BuyPrice6" class="price" class="price"></td>
+        <td id="SellItem6" class="button"></td>
+        <td id="SellPrice6" class="price" class="price"></td>
       </tr>
       <tr>
         <td>Scavenger Rakatin</td>
-        <td>[&BAYIAAA=]</td>
-        <td id="BuyItem7"></td>
-        <td id="BuyPrice7"></td>
-        <td id="SellItem7"></td>
-        <td id="SellPrice7"></td>
+        <td onclick="copyText(this.innerText)" class="button">[&BAYIAAA=]</td>
+        <td id="BuyItem7" class="button"></td>
+        <td id="BuyPrice7" class="price"></td>
+        <td id="SellItem7" class="button"></td>
+        <td id="SellPrice7" class="price"></td>
       </tr>
       <tr>
         <td>Forager Polly</td>
-        <td>[&BAIIAAA=]</td>
-        <td id="BuyItem8"></td>
-        <td id="BuyPrice8"></td>
-        <td id="SellItem8"></td>
-        <td id="SellPrice8"></td>
+        <td onclick="copyText(this.innerText)" class="button">[&BAIIAAA=]</td>
+        <td id="BuyItem8" class="button"></td>
+        <td id="BuyPrice8" class="price"></td>
+        <td id="SellItem8" class="button"></td>
+        <td id="SellPrice8" class="price"></td>
       </tr>
 
       <tr class="divider">
         <td rowspan="4">Tangled Depths</td>
         <td>Supplier Huanya</td>
-        <td>[&BAwIAAA=]</td>
-        <td id="BuyItem9"></td>
-        <td id="BuyPrice9"></td>
-        <td id="SellItem9"></td>
-        <td id="SellPrice9"></td>
+        <td onclick="copyText(this.innerText)" class="button">[&BAwIAAA=]</td>
+        <td id="BuyItem9" class="button"></td>
+        <td id="BuyPrice9" class="price"></td>
+        <td id="SellItem9" class="button"></td>
+        <td id="SellPrice9" class="price"></td>
       </tr>
       <tr>
         <td>Jatt</td>
-        <td>[&BAMIAAA=]</td>
-        <td id="BuyItem10"></td>
-        <td id="BuyPrice10"></td>
-        <td id="SellItem10"></td>
-        <td id="SellPrice10"></td>
+        <td onclick="copyText(this.innerText)" class="button">[&BAMIAAA=]</td>
+        <td id="BuyItem10" class="button"></td>
+        <td id="BuyPrice10" class="price"></td>
+        <td id="SellItem10" class="button"></td>
+        <td id="SellPrice10" class="price"></td>
       </tr>
       <tr>
         <td>Supply Assistant</td>
-        <td>[&BMwHAAA=]</td>
-        <td id="BuyItem11"></td>
-        <td id="BuyPrice11"></td>
-        <td id="SellItem11"></td>
-        <td id="SellPrice11"></td>
+        <td onclick="copyText(this.innerText)" class="button">[&BMwHAAA=]</td>
+        <td id="BuyItem11" class="button"></td>
+        <td id="BuyPrice11" class="price"></td>
+        <td id="SellItem11" class="button"></td>
+        <td id="SellPrice11" class="price"></td>
       </tr>
       <tr>
         <td>Terrill Tinkerclaw</td>
-        <td>[&BAAIAAA=]</td>
-        <td id="BuyItem12"></td>
-        <td id="BuyPrice12"></td>
-        <td id="SellItem12"></td>
-        <td id="SellPrice12"></td>
+        <td onclick="copyText(this.innerText)" class="button">[&BAAIAAA=]</td>
+        <td id="BuyItem12" class="button"></td>
+        <td id="BuyPrice12" class="price"></td>
+        <td id="SellItem12" class="button"></td>
+        <td id="SellPrice12" class="price"></td>
       </tr>
       <tfoot class="divider">
         <td colspan="7">
-          <span class="button" onclick="loadTable()">Reload</span>
+          <span id="reload" class="button" onclick="loadTable()">Reload</span>
         </td>
       </tfoor>
     </tbody>
