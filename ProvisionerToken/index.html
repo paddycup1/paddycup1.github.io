@@ -221,10 +221,23 @@
             return 0;
         }
 
-        function copyText(str) {
+        function copyText() {
             let text = this.innerText;
             this.className += " visited";
             navigator.clipboard.writeText(text).then(function() {
+                console.log('Async: Copying to clipboard was successful!');
+            }, function(err) {
+                console.error('Async: Could not copy text: ', err);
+            });
+        }
+
+        function copyAllWaypoint(){
+          let text = "";
+          let waypoints = document.getElementsByClassName("waypoint");
+          for (let i = 0; i < AGENT_COUNT; i++) {
+            text += waypoints[i].innerText;
+          }
+          navigator.clipboard.writeText(text).then(function() {
                 console.log('Async: Copying to clipboard was successful!');
             }, function(err) {
                 console.error('Async: Could not copy text: ', err);
@@ -239,7 +252,7 @@
             <tr>
                 <th>Map</th>
                 <th>Agent Name</th>
-                <th>Waypoint</th>
+                <th class="button" onclick="copyAllWaypoint()">Waypoint</th>
                 <th>Best Buy Item</th>
                 <th>Buy Price</th>
                 <th>Best Sell Item (Instantly Buy)</th>
