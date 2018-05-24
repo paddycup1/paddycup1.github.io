@@ -114,9 +114,9 @@
                             }
                         }
                         document.getElementById("BuyItem" + (i + 1)).innerText = items[agentBaseIndex + bestBuyIndex].name;
-                        document.getElementById("BuyPrice" + (i + 1)).innerText = numberToG(items[agentBaseIndex + bestBuyIndex].buy);
+                        document.getElementById("BuyPrice" + (i + 1)).innerHTML = numberToG(items[agentBaseIndex + bestBuyIndex].buy);
                         document.getElementById("SellItem" + (i + 1)).innerText = items[agentBaseIndex + bestSellIndex].name;
-                        document.getElementById("SellPrice" + (i + 1)).innerText = numberToG(items[agentBaseIndex + bestSellIndex].sell);
+                        document.getElementById("SellPrice" + (i + 1)).innerHTML = numberToG(items[agentBaseIndex + bestSellIndex].sell);
                     }
                 }
             };
@@ -172,11 +172,11 @@
 
         function numberToG(num) {
             if (num >= 10000) {
-                return "" + Math.floor(num / 10000) + "G " + (((num / 100) % 100) > 10 ? "" : "0") + Math.floor((num / 100) % 100) + "S " + ((num % 100) > 10 ? "" : "0") + num % 100 + "C";
+                return "" + Math.floor(num / 10000) + "<img src=\"Gold_coin.png\">" + (((num / 100) % 100) > 10 ? "" : "0") + Math.floor((num / 100) % 100) + "<img src=\"Silver_coin.png\">" + ((num % 100) > 10 ? "" : "0") + num % 100 + "<img src=\"Copper_coin.png\">";
             } else if (num >= 100) {
-                return "" + Math.floor(num / 100) + "S " + ((num % 100) > 10 ? "" : "0") + num % 100 + "C";
+                return "" + Math.floor(num / 100) + "<img src=\"Silver_coin.png\">" + ((num % 100) > 10 ? "" : "0") + num % 100 + "<img src=\"Copper_coin.png\">";
             } else {
-                return "" + num + "C"
+                return "" + num + "<img src=\"Copper_coin.png\">"
             }
         }
 
