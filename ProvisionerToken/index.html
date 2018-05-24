@@ -224,10 +224,8 @@
     function copyText() {
       let text = this.innerText;
       navigator.clipboard.writeText(text).then(() => {
-        if (this.classList.contains("visited")) {
-          this.classList.remove("visited");
-        } else {
-          this.className += " visited";
+        if (this.classList.contains("toggle")) {
+          this.classList.toggle("visited");
         }
       }, (err) => {
         console.error('Async: Could not copy text: ', err);
@@ -265,41 +263,41 @@
         <td rowspan="5">Verdant Brink</td>
         <td>Quartermaster Natomi</td>
         <td class="button waypoint">[&BN4HAAA=]</td>
-        <td id="BuyItem1" class="button"></td>
+        <td id="BuyItem1" class="button toggle"></td>
         <td id="BuyPrice1" class="price"></td>
-        <td id="SellItem1" class="button"></td>
+        <td id="SellItem1" class="button toggle"></td>
         <td id="SellPrice1" class="price"></td>
       </tr>
       <tr>
         <td>Supplymaster Kani</td>
         <td class="button waypoint">[&BOAHAAA=]</td>
-        <td id="BuyItem2" class="button"></td>
+        <td id="BuyItem2" class="button toggle"></td>
         <td id="BuyPrice2" class="price"></td>
-        <td id="SellItem2" class="button"></td>
+        <td id="SellItem2" class="button toggle"></td>
         <td id="SellPrice2" class="price"></td>
       </tr>
       <tr>
         <td>Quartermaster Vec</td>
         <td class="button waypoint">[&BAgIAAA=]</td>
-        <td id="BuyItem3" class="button"></td>
+        <td id="BuyItem3" class="button toggle"></td>
         <td id="BuyPrice3" class="price"></td>
-        <td id="SellItem3" class="button"></td>
+        <td id="SellItem3" class="button toggle"></td>
         <td id="SellPrice3" class="price"></td>
       </tr>
       <tr>
         <td>Quartermaster Ival</td>
         <td class="button waypoint">[&BNUHAAA=]</td>
-        <td id="BuyItem4" class="button"></td>
+        <td id="BuyItem4" class="button toggle"></td>
         <td id="BuyPrice4" class="price"></td>
-        <td id="SellItem4" class="button"></td>
+        <td id="SellItem4" class="button toggle"></td>
         <td id="SellPrice4" class="price"></td>
       </tr>
       <tr>
         <td>Steward Katren</td>
         <td class="button waypoint">[&BO8HAAA=]</td>
-        <td id="BuyItem5" class="button"></td>
+        <td id="BuyItem5" class="button toggle"></td>
         <td id="BuyPrice5" class="price"></td>
-        <td id="SellItem5" class="button"></td>
+        <td id="SellItem5" class="button toggle"></td>
         <td id="SellPrice5" class="price"></td>
       </tr>
       
@@ -307,25 +305,25 @@
         <td rowspan="3">Auric Basin</td>
         <td>Supplymaster Azzi</td>
         <td class="button waypoint">[&BN0HAAA=]</td>
-        <td id="BuyItem6" class="button"></td>
+        <td id="BuyItem6" class="button toggle"></td>
         <td id="BuyPrice6" class="price" class="price"></td>
-        <td id="SellItem6" class="button"></td>
+        <td id="SellItem6" class="button toggle"></td>
         <td id="SellPrice6" class="price" class="price"></td>
       </tr>
       <tr>
         <td>Scavenger Rakatin</td>
         <td class="button waypoint">[&BAYIAAA=]</td>
-        <td id="BuyItem7" class="button"></td>
+        <td id="BuyItem7" class="button toggle"></td>
         <td id="BuyPrice7" class="price"></td>
-        <td id="SellItem7" class="button"></td>
+        <td id="SellItem7" class="button toggle"></td>
         <td id="SellPrice7" class="price"></td>
       </tr>
       <tr>
         <td>Forager Polly</td>
         <td class="button waypoint">[&BAIIAAA=]</td>
-        <td id="BuyItem8" class="button"></td>
+        <td id="BuyItem8" class="button toggle"></td>
         <td id="BuyPrice8" class="price"></td>
-        <td id="SellItem8" class="button"></td>
+        <td id="SellItem8" class="button toggle"></td>
         <td id="SellPrice8" class="price"></td>
       </tr>
       
@@ -333,33 +331,33 @@
         <td rowspan="4">Tangled Depths</td>
         <td>Supplier Huanya</td>
         <td class="button waypoint">[&BAwIAAA=]</td>
-        <td id="BuyItem9" class="button"></td>
+        <td id="BuyItem9" class="button toggle"></td>
         <td id="BuyPrice9" class="price"></td>
-        <td id="SellItem9" class="button"></td>
+        <td id="SellItem9" class="button toggle"></td>
         <td id="SellPrice9" class="price"></td>
       </tr>
       <tr>
         <td>Jatt</td>
         <td class="button waypoint">[&BAMIAAA=]</td>
-        <td id="BuyItem10" class="button"></td>
+        <td id="BuyItem10" class="button toggle"></td>
         <td id="BuyPrice10" class="price"></td>
-        <td id="SellItem10" class="button"></td>
+        <td id="SellItem10" class="button toggle"></td>
         <td id="SellPrice10" class="price"></td>
       </tr>
       <tr>
         <td>Supply Assistant</td>
         <td class="button waypoint">[&BMwHAAA=]</td>
-        <td id="BuyItem11" class="button"></td>
+        <td id="BuyItem11" class="button toggle"></td>
         <td id="BuyPrice11" class="price"></td>
-        <td id="SellItem11" class="button"></td>
+        <td id="SellItem11" class="button toggle"></td>
         <td id="SellPrice11" class="price"></td>
       </tr>
       <tr>
         <td>Terrill Tinkerclaw</td>
         <td class="button waypoint">[&BAAIAAA=]</td>
-        <td id="BuyItem12" class="button"></td>
+        <td id="BuyItem12" class="button toggle"></td>
         <td id="BuyPrice12" class="price"></td>
-        <td id="SellItem12" class="button"></td>
+        <td id="SellItem12" class="button toggle"></td>
         <td id="SellPrice12" class="price"></td>
       </tr>
       <tfoot class="divider">

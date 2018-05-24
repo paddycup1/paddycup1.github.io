@@ -35,10 +35,15 @@ tfoot {
 
 td.price {
   text-align: right;
+  transition: color 0.1s;
 }
 
 .visited {
-  color: rgb(143, 143, 255)
+  color: rgb(112, 112, 112);
+}
+
+.visited+td.price {
+  color: rgb(112, 112, 112);
 }
 
 .button {
