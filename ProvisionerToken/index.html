@@ -10,6 +10,9 @@
   <script type="text/javascript">
     const ITEM_PER_AGENT = 6;
     const AGENT_COUNT = 12;
+    let copperCoinImg = "";
+    let silverCoinImg = "";
+    let goldCoinImg = "";
     let ItemLinks = [
     "[&AgHJtAAA]",
     "[&AgFqtAAA]",
@@ -86,6 +89,7 @@
     ];
     
     function onload() {
+      getCoinIcon();
       let waypoints = document.getElementsByClassName("waypoint");
       for (let i = 0; i < AGENT_COUNT; i++) {
         document.getElementById("BuyItem" + (i + 1)).addEventListener("click", copyText);
@@ -93,6 +97,26 @@
         waypoints[i].addEventListener("click", copyText);
       }
       loadTable();
+    }
+    
+    function getCoinIcon() {
+      let request = new XMLHttpRequest();
+      let url = "https://api.guildwars2.com/v2/files?ids=all";
+      request.open("GET", url);
+      request.onload = () => {
+        let data = JSON.parse(request.response);
+        
+        for (let icon of data) {
+          if (icon.id == "ui_coin_gold") {
+            goldCoinImg = icon.icon;
+          } else if (icon.id == "ui_coin_silver") {
+            silverCoinImg = icon.icon;
+          } else if (icon.id == "ui_coin_copper") {
+            copperCoinImg = icon.icon;
+          }
+        }
+      }
+      request.send();
     }
     
     function loadTable() {
@@ -171,12 +195,19 @@
     }
     
     function numberToG(num) {
+      //let gold = "<img src=\"" + goldCoinImg + "\">";
+      //let silver = "<img src=\"" + silverCoinImg + "\">";
+      //let copper = "<img src=\"" + copperCoinImg + "\">";
+      let gold = "<div class=coin style=\"background-image: url(" + goldCoinImg + ")\">---</div>";
+      let silver = "<div class=coin style=\"background-image: url(" + silverCoinImg + ")\">---</div>";
+      let copper = "<div class=coin style=\"background-image: url(" + copperCoinImg + ")\">---</div>";
+      
       if (num >= 10000) {
-        return "" + Math.floor(num / 10000) + "<img src=\"Gold_coin.png\">" + (((num / 100) % 100) > 10 ? "" : "0") + Math.floor((num / 100) % 100) + "<img src=\"Silver_coin.png\">" + ((num % 100) > 10 ? "" : "0") + num % 100 + "<img src=\"Copper_coin.png\">";
+        return "" + Math.floor(num / 10000) + gold + (((num / 100) % 100) >= 10 ? "" : "0") + Math.floor((num / 100) % 100) + silver + ((num % 100) >= 10 ? "" : "0") + num % 100 + copper;
       } else if (num >= 100) {
-        return "" + Math.floor(num / 100) + "<img src=\"Silver_coin.png\">" + ((num % 100) > 10 ? "" : "0") + num % 100 + "<img src=\"Copper_coin.png\">";
+        return "" + Math.floor(num / 100) + silver + ((num % 100) >= 10 ? "" : "0") + num % 100 + copper;
       } else {
-        return "" + num + "<img src=\"Copper_coin.png\">"
+        return "" + num + copper;
       }
     }
     

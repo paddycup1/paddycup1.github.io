@@ -71,3 +71,9 @@ div.comment {
   text-align: center;
   margin-top: 10px;
 }
+
+.coin{
+  display: inline;
+  background-position: center; 
+  color: rgba(255, 255, 255, 0)
+}
