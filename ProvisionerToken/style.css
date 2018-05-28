@@ -38,11 +38,7 @@ td.price {
   transition: color 0.1s;
 }
 
-.visited {
-  color: rgb(112, 112, 112);
-}
-
-.visited+td.price {
+.visited, .visited+td.price {
   color: rgb(112, 112, 112);
 }
 
@@ -73,7 +69,8 @@ div.comment {
 }
 
 .coin{
-  display: inline;
+  display: inline-block;
+  width:1.4em;
   background-position: center; 
   color: rgba(255, 255, 255, 0)
 }

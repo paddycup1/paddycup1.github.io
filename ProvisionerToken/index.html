@@ -195,12 +195,9 @@
     }
     
     function numberToG(num) {
-      //let gold = "<img src=\"" + goldCoinImg + "\">";
-      //let silver = "<img src=\"" + silverCoinImg + "\">";
-      //let copper = "<img src=\"" + copperCoinImg + "\">";
-      let gold = "<div class=coin style=\"background-image: url(" + goldCoinImg + ")\">---</div>";
-      let silver = "<div class=coin style=\"background-image: url(" + silverCoinImg + ")\">---</div>";
-      let copper = "<div class=coin style=\"background-image: url(" + copperCoinImg + ")\">---</div>";
+      let gold = "<div class=coin style=\"background-image: url(" + goldCoinImg + ")\">--</div>";
+      let silver = "<div class=coin style=\"background-image: url(" + silverCoinImg + ")\">--</div>";
+      let copper = "<div class=coin style=\"background-image: url(" + copperCoinImg + ")\">--</div>";
       
       if (num >= 10000) {
         return "" + Math.floor(num / 10000) + gold + (((num / 100) % 100) >= 10 ? "" : "0") + Math.floor((num / 100) % 100) + silver + ((num % 100) >= 10 ? "" : "0") + num % 100 + copper;
