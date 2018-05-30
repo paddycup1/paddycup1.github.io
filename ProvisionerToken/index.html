@@ -89,19 +89,24 @@
     ];
     
     function onload() {
-      getCoinIcon();
+      for (let i = 0; i < AGENT_COUNT; i++) {
+        document.getElementById("BuyItem" + (i + 1)).innerText = "loading...";
+        document.getElementById("BuyPrice" + (i + 1)).innerText = "loading...";
+        document.getElementById("SellItem" + (i + 1)).innerText = "loading...";
+        document.getElementById("SellPrice" + (i + 1)).innerText = "loading...";
+      }
+      getCoinIcon(loadTable);
       let waypoints = document.getElementsByClassName("waypoint");
       for (let i = 0; i < AGENT_COUNT; i++) {
         document.getElementById("BuyItem" + (i + 1)).addEventListener("click", copyText);
         document.getElementById("SellItem" + (i + 1)).addEventListener("click", copyText);
         waypoints[i].addEventListener("click", copyText);
       }
-      loadTable();
     }
     
-    function getCoinIcon() {
+    function getCoinIcon(onComplete) {
       let request = new XMLHttpRequest();
-      let url = "https://api.guildwars2.com/v2/files?ids=all";
+      let url = "https://api.guildwars2.com/v2/files?ids=ui_coin_gold,ui_coin_silver,ui_coin_copper";
       request.open("GET", url);
       request.onload = () => {
         let data = JSON.parse(request.response);
@@ -115,37 +120,15 @@
             copperCoinImg = icon.icon;
           }
         }
+
+        if(onComplete){
+          onComplete();
+        }
       }
       request.send();
     }
     
     function loadTable() {
-      let items = new Array(ItemLinks.length);
-      let completeCount = 0;
-      let onComplete = () => {
-        completeCount += 1;
-        if (completeCount == ItemLinks.length << 1) {
-          for (let i = 0; i < AGENT_COUNT; i++) {
-            let agentBaseIndex = i * ITEM_PER_AGENT;
-            let bestBuyIndex = 0;
-            let bestSellIndex = 0;
-            
-            for (let j = 1; j < ITEM_PER_AGENT; j++) {
-              if (items[agentBaseIndex + j].buy < items[agentBaseIndex + bestBuyIndex].buy) {
-                bestBuyIndex = j;
-              }
-              if (items[agentBaseIndex + j].sell < items[agentBaseIndex + bestSellIndex].sell) {
-                bestSellIndex = j;
-              }
-            }
-            document.getElementById("BuyItem" + (i + 1)).innerText = items[agentBaseIndex + bestBuyIndex].name;
-            document.getElementById("BuyPrice" + (i + 1)).innerHTML = numberToG(items[agentBaseIndex + bestBuyIndex].buy);
-            document.getElementById("SellItem" + (i + 1)).innerText = items[agentBaseIndex + bestSellIndex].name;
-            document.getElementById("SellPrice" + (i + 1)).innerHTML = numberToG(items[agentBaseIndex + bestSellIndex].sell);
-          }
-        }
-      };
-      
       for (let i = 0; i < AGENT_COUNT; i++) {
         document.getElementById("BuyItem" + (i + 1)).innerText = "loading...";
         document.getElementById("BuyPrice" + (i + 1)).innerText = "loading...";
@@ -153,51 +136,97 @@
         document.getElementById("SellPrice" + (i + 1)).innerText = "loading...";
       }
       
-      for (let i = 0; i < ItemLinks.length; i++) {
-        items[i] = {};
-        getName(ItemLinks[i], items[i], onComplete);
-        getPrice(ItemLinks[i], items[i], onComplete);
+      let ids = new Array(ItemLinks.length);
+      for(let i = 0; i < ItemLinks.length; i++){
+        ids[i] = getItemId(ItemLinks[i]);
       }
-      return items;
+
+      let request = new XMLHttpRequest();
+      let url = "https://api.guildwars2.com/v2/commerce/prices?ids=" + ids[0];
+      for(let i = 1; i < ids.length; i++){
+        url += "," + ids[i];
+      }
+      request.open("GET", url);
+      request.onload = () => {
+        let response = JSON.parse(request.response);
+        let map = new Map();
+        let buyIds = new Array(AGENT_COUNT);
+        let sellIds = new Array(AGENT_COUNT);
+        let bestBuyIndex;
+        let bestSellIndex;
+
+        for(let data of response){
+          map.set(data.id, {buy:data.buys.unit_price, sell:data.sells.unit_price});
+        }
+
+        for(let i = 0; i < AGENT_COUNT; i++){
+          let base = i * ITEM_PER_AGENT;
+          bestBuyIndex = base;
+          bestSellIndex = base;
+          for(let j = 1; j < ITEM_PER_AGENT; j++){
+            if(map.get(ids[base + j]).buy < map.get(ids[bestBuyIndex]).buy){
+              bestBuyIndex = base + j;
+            }
+            if(map.get(ids[base + j]).sell < map.get(ids[bestSellIndex]).sell){
+              bestSellIndex = base + j;
+            }
+          }
+          buyIds[i] = ids[bestBuyIndex];
+          sellIds[i] = ids[bestSellIndex];
+          document.getElementById("BuyPrice" + (i + 1)).innerHTML = numberToG(map.get(ids[bestBuyIndex]).buy);
+          document.getElementById("SellPrice" + (i + 1)).innerHTML = numberToG(map.get(ids[bestSellIndex]).sell);
+        }
+
+        let buyRequest = new XMLHttpRequest();
+        let sellRequest = new XMLHttpRequest();
+        let buyUrl = "https://api.guildwars2.com/v2/items?lang=en&ids=" + buyIds[0];
+        let sellUrl = "https://api.guildwars2.com/v2/items?lang=en&ids=" + sellIds[0];
+
+        for(let i = 1; i < AGENT_COUNT; i++){
+          buyUrl += "," + buyIds[i];
+          sellUrl += "," + sellIds[i];
+        }
+        buyRequest.open("GET", buyUrl);
+        sellRequest.open("GET", sellUrl);
+
+        buyRequest.onload = () => {
+          let response = JSON.parse(buyRequest.response);
+          let map = new Map();
+
+          for(let data of response){
+            map.set(data.id, data);
+          }
+
+          for(let i = 0; i < AGENT_COUNT; i++){
+            document.getElementById("BuyItem" + (i + 1)).innerText = map.get(buyIds[i]).name;
+          }
+        };
+        sellRequest.onload = () => {
+          let response = JSON.parse(sellRequest.response);
+          let map = new Map();
+
+          for(let data of response){
+            map.set(data.id, data);
+          }
+
+          for(let i = 0; i < AGENT_COUNT; i++){
+            document.getElementById("SellItem" + (i + 1)).innerText = map.get(sellIds[i]).name;
+          }
+        };
+        buyRequest.send();
+        sellRequest.send();
+      }
+      request.send();
     }
     
     function getItemId(str) {
       return (getItemByte(str, 4) << 16) + (getItemByte(str, 3) << 8) + getItemByte(str, 2);
     }
     
-    function getPrice(str, item, onComplete) {
-      let request = new XMLHttpRequest();
-      let url = "https://api.guildwars2.com/v2/commerce/prices/" + getItemId(str);
-      request.open("GET", url);
-      request.onload = () => {
-        let data = JSON.parse(request.response);
-        item.sell = data.sells.unit_price;
-        item.buy = data.buys.unit_price;
-        if (onComplete) {
-          onComplete();
-        }
-      }
-      request.send();
-    }
-    
-    function getName(str, item, onComplete) {
-      let request = new XMLHttpRequest();
-      let url = "https://api.guildwars2.com/v2/items/" + getItemId(str) + "?lang=en";
-      request.open("GET", url);
-      request.onload = () => {
-        let data = JSON.parse(request.response);
-        item.name = data.name;
-        if (onComplete) {
-          onComplete();
-        }
-      }
-      request.send();
-    }
-    
     function numberToG(num) {
-      let gold = "<div class=coin style=\"background-image: url(" + goldCoinImg + ")\">--</div>";
-      let silver = "<div class=coin style=\"background-image: url(" + silverCoinImg + ")\">--</div>";
-      let copper = "<div class=coin style=\"background-image: url(" + copperCoinImg + ")\">--</div>";
+      let gold   = "<div class=coin style=\"background-image: url(" + goldCoinImg   + ")\">-</div>";
+      let silver = "<div class=coin style=\"background-image: url(" + silverCoinImg + ")\">-</div>";
+      let copper = "<div class=coin style=\"background-image: url(" + copperCoinImg + ")\">-</div>";
       
       if (num >= 10000) {
         return "" + Math.floor(num / 10000) + gold + (((num / 100) % 100) >= 10 ? "" : "0") + Math.floor((num / 100) % 100) + silver + ((num % 100) >= 10 ? "" : "0") + num % 100 + copper;
